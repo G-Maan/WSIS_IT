@@ -1,4 +1,4 @@
-#WSIS_IT (PL)
+# WSIS_IT (PL)
 To repozytorium zawiera wszystkie programy napisane podczas studiów magisterskich na WSIS.
 
 ***
@@ -8,9 +8,9 @@ Nie radzę uploadować zamieszczonych tu plików źródłowych (w niezmienionej 
 **U mnie nie działa :( , co robić?**  
 Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazwę folderu zawierającego kod "wadliwego" programu. W treści podaj jak najwięcej informacji, które mogą pomóć zidentyfikować problem (OS, IDE, kompilator, przykładowe testy itd.).
 
-##Semestr I
+## Semestr I
 
-###Zaawansowane algorytmy i struktury danych
+### Zaawansowane algorytmy i struktury danych
 
 1. Laboratorium 2
 	* BUBSORT
@@ -23,7 +23,7 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 	* CPPCOUNTSORT
 	* SELSORTM
 
-###Programowanie JAVA
+### Programowanie JAVA
 
 1. Lista zadań 1
 	* Zadanie 01_01

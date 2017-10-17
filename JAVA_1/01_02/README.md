@@ -25,4 +25,4 @@ Otrzymamy wynik
 `abbab`  
 `bababbab`
   
-(Każdy kolejny element ciągu jet konkatenacją/złączeniem dwóch poprzednich)
+(Każdy kolejny element ciągu jest konkatenacją/złączeniem dwóch poprzednich)

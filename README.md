@@ -27,6 +27,6 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 
 1. Lista zadań 1
 	* [Zadanie 01_01](https://github.com/peterkowalski/WSIS_IT/tree/master/JAVA_1/01_01)
-	* Zadanie 01_02
+	* [Zadanie 01_02](https://github.com/peterkowalski/WSIS_IT/tree/master/JAVA_1/01_02)
 	* Zadanie 01_03
 

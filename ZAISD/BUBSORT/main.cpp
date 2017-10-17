@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     int n;
-    std::unique_ptr<int[]> numbers(new int[n]); // Create dynamic table.
+    unique_ptr<int[]> numbers(new int[n]); // Create dynamic table in C++14 standard.
 
     cin >> n;
 

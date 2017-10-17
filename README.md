@@ -18,8 +18,8 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 	* SUMSUB
 2. Zadanie domowe 2
 	* [ABS](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/ABS)
-	* CARDS3A
-	* CESTA
+	* [CARDS3A](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CARDS3A)
+	* [CESTA](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CESTA)
 	* CPPCOUNTSORT
 	* SELSORTM
 

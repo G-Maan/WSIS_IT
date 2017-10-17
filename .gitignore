@@ -3,5 +3,7 @@
 !*/
 cmake-build-debug/
 CMakeLists.txt
+*.iml
 .idea/
+out/
 .DS_Store

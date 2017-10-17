@@ -15,7 +15,7 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 1. Laboratorium 2
 	* [BUBSORT](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/BUBSORT)
 	* [CZY_PERMUTACJA](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CZY_PERMUTACJA)
-	* [SUMSUB] (https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/SUMSUB)
+	* [SUMSUB](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/SUMSUB)
 2. Zadanie domowe 2
 	* [ABS](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/ABS)
 	* [CARDS3A](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CARDS3A)

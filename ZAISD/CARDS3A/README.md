@@ -8,7 +8,7 @@ Bajtek przygotował tym razem swoją własną talię kart! Na każdej z n kart n
 
 ## Wejście
 
-W pierwszej linii dana jest jedna liczba całkowita n (1 ≤ n ≤ 10 do potęgi 6) określająca liczbę kart w kolekcji Bajtka. W następnej linii znajduje się n liczb - są to liczby z przygotowanych przez chłopca kart, wiadomo, że liczba ai na i-tej karcie jest z przedziału [-1000, 1000].
+W pierwszej linii dana jest jedna liczba całkowita n (1 ≤ n ≤ 10^6) określająca liczbę kart w kolekcji Bajtka. W następnej linii znajduje się n liczb - są to liczby z przygotowanych przez chłopca kart, wiadomo, że liczba ai na i-tej karcie jest z przedziału [-1000, 1000].
 
 ## Wyjście
 

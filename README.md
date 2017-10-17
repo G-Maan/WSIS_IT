@@ -13,17 +13,17 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 ### Zaawansowane algorytmy i struktury danych
 
 1. Laboratorium 2
-	* BUBSORT
+	* [BUBSORT](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/BUBSORT)
 	* CZY_PERMUTACJA
 	* SUMSUB
 2. Zadanie domowe 2
-	* ABS
+	* [ABS](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/ABS)
 	* CARDS3A
 	* CESTA
 	* CPPCOUNTSORT
 	* SELSORTM
 
-### Programowanie JAVA
+### Programowanie JAVA (Węzowski)
 
 1. Lista zadań 1
 	* Zadanie 01_01

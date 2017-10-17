@@ -1,41 +1,32 @@
 #include <iostream>
-#include <algorithm> // Required for swap()
 
 using namespace std;
 
-int main()
-{
+int main() {
     int n;
-    int* numbers = new int[n];
+    std::unique_ptr<int[]> numbers(new int[n]); // Create dynamic table.
 
     cin >> n;
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cin >> numbers[i];
     }
 
-    bool swapped;
-    for (int i=0;i<n;i++) 
-    {
+    bool swapped; // Remember if table changed during iteration.
+    for (int i = 0; i < n; i++) {
         swapped = false;
-        for (int j=0;j<n-1;j++)
-        {
-            if(numbers[j] > numbers[j+1])
-            {
-                swap(numbers[j], numbers[j+1]);
+        for (int j = 0; j < n - 1; j++) {
+            if (numbers[j] > numbers[j + 1]) {
+                swap(numbers[j], numbers[j + 1]);
                 swapped = true;
             }
         }
-        if(swapped)
-        {
-            for(int j=0;j<n;j++)
-            {
-                cout<< numbers[j]<< " ";
+        if (swapped) {
+            for (int j = 0; j < n; j++) {
+                cout << numbers[j] << " ";
             }
-        }
-        else
-        {
+            cout << endl;
+        } else {
             return 0;
         }
     }

@@ -14,13 +14,13 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 
 1. Laboratorium 2
 	* [BUBSORT](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/BUBSORT)
-	* CZY_PERMUTACJA
+	* [CZY_PERMUTACJA](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CZY_PERMUTACJA)
 	* SUMSUB
 2. Zadanie domowe 2
 	* [ABS](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/ABS)
 	* [CARDS3A](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CARDS3A)
 	* [CESTA](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CESTA)
-	* CPPCOUNTSORT
+	* [CPPCOUNTSORT](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CPPCOUNTSORT)
 	* SELSORTM
 
 ### Programowanie JAVA (Węzowski)

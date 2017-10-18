@@ -18,8 +18,6 @@ public class Main {
                 return a;
             case 1:
                 return b;
-            case 2:
-                return a + b;
             default:
                 return (fibonacci(a, b, n - 2) + fibonacci(a, b, n - 1)); // F(n) = F(n-2) + F(n-1)
         }

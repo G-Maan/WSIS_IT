@@ -21,12 +21,21 @@ class CarTest {
     */
 
     @Test
-    void setRegistrationNumberEmpty() {
+    void setRegistrationNumber() {
+        String registrationNumber = "DGL 95325";
+        car.setRegistrationNumber(registrationNumber);
+        assertEquals(registrationNumber, car.getRegistrationNumber());
+
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            car.setRegistrationNumber("DGL D952");
+        });
+        assertEquals("Wyróżnik pojazdu zawiera niedozwolone znaki (B,D,I,O,Z,0).", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
             car.setRegistrationNumber("");
         });
         assertEquals("Numer rejestracyjny niezgodny z dopuszczalnym wzorcem.", exception.getMessage());
-    }
+}
 
     @Test
     void setProductionYear() {
@@ -34,27 +43,32 @@ class CarTest {
 
     @Test
     void rentCar() {
+        car.rent();
+        car.give();
+        car.rent();
+
+        Throwable exception = assertThrows(IllegalStateException.class, () -> {
+            car.rent();
+        });
+        assertEquals("Samochód jest już wynajęty.", exception.getMessage());
     }
 
     @Test
-    void giveCar() {
+    void give() {
+        Throwable exception = assertThrows(IllegalStateException.class, () -> {
+            car.give();
+        });
+        assertEquals("Samochód nie został wynajęty.", exception.getMessage());
+
+        car.rent();
+        car.give();
     }
 
     @Test
     void testToString() {
-
-        // Czy jest sens?
         String expected = "Alfa Romeo 1995\n" +
-                "Registration number: ACE 12345\n" +
-                "Status: Available";
-
-        /*
-        System.out.println("Expected output:");
-        System.out.println(expected + "\n");
-
-        System.out.println("car.toString() output:");
-        System.out.println(car.toString() + "\n");
-        */
+                "Numer rejestracyjny: ACE 12345\n" +
+                "Status: Dostępny";
 
         assertEquals(car.toString(), expected);
     }

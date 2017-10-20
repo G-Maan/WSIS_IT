@@ -71,16 +71,18 @@ public class Car {
     }
 
     private void validateRegistrationNumber(String registrationNumber) {
-        if (registrationNumber.contains("B") ||
-                registrationNumber.contains("D") ||
-                registrationNumber.contains("I") ||
-                registrationNumber.contains("O") ||
-                registrationNumber.contains("Z") ||
-                registrationNumber.contains("0")) {
-            throw new IllegalArgumentException("Numer rejestracyjny zawiera niedozwolone znaki (B,D,I,O,Z,0).");
-        }
-
         checkRegistrationNumberPattern(registrationNumber);
+
+        String regNumberSubstring = registrationNumber.substring(3);
+
+        if (regNumberSubstring.contains("B") ||
+                regNumberSubstring.contains("D") ||
+                regNumberSubstring.contains("I") ||
+                regNumberSubstring.contains("O") ||
+                regNumberSubstring.contains("Z") ||
+                regNumberSubstring.contains("0")) {
+            throw new IllegalArgumentException("Wyróżnik pojazdu zawiera niedozwolone znaki (B,D,I,O,Z,0).");
+        }
     }
 
     public final void setRegistrationNumber(String registrationNumber) {
@@ -127,17 +129,15 @@ public class Car {
         return productionYear;
     }
 
-    public final void rentCar() {
+    public final void rent() {
         if (rented) {
-
-            // Na pewno exception?
             throw new IllegalStateException("Samochód jest już wynajęty.");
         } else {
             this.rented = true;
         }
     }
 
-    public final void giveCar() {
+    public final void give() {
         if (!rented) {
             throw new IllegalStateException("Samochód nie został wynajęty.");
         } else {
@@ -161,13 +161,13 @@ public class Car {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(producer).append(" ").append(model).append(" ").append(productionYear).append("\n");
-        sb.append("Registration number: ").append(registrationNumber).append("\n");
+        sb.append("Numer rejestracyjny: ").append(registrationNumber).append("\n");
         sb.append("Status: ");
 
         if (rented) {
-            sb.append("Rented");
+            sb.append("Wypożyczony");
         } else {
-            sb.append("Available");
+            sb.append("Dostępny");
         }
 
         return sb.toString();

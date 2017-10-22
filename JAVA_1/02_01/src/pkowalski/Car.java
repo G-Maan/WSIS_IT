@@ -27,7 +27,9 @@ public class Car {
             "LLL_LDLL",     // XYZ_A1CE
     };
 
-    private boolean checkCharacter(char option, char registrationNumberChar) {
+    private static final char[] registrationNumberInvalidChars = {'B', 'D', 'I', 'O', 'Z', '0'};
+
+    private boolean checkCharacter(char option, char registrationNumberChar) throws IllegalArgumentException {
         switch (option) {
             case 'L':
                 return Character.isLetter(registrationNumberChar);
@@ -45,7 +47,7 @@ public class Car {
         }
     }
 
-    private void checkRegistrationNumberPattern(String registrationNumber) {
+    private void checkRegistrationNumberPattern(String registrationNumber) throws IllegalArgumentException {
         boolean continueValidation;  // If pattern validation should continue.
 
         for (String pattern : registrationNumberPatterns) {
@@ -70,32 +72,27 @@ public class Car {
         throw new IllegalArgumentException("Numer rejestracyjny niezgodny z dopuszczalnym wzorcem.");
     }
 
-    private void validateRegistrationNumber(String registrationNumber) {
+    private void validateRegistrationNumber(String registrationNumber) throws IllegalArgumentException {
         checkRegistrationNumberPattern(registrationNumber);
 
         String regNumberSubstring = registrationNumber.substring(3);
 
-        if (regNumberSubstring.contains("B") ||
-                regNumberSubstring.contains("D") ||
-                regNumberSubstring.contains("I") ||
-                regNumberSubstring.contains("O") ||
-                regNumberSubstring.contains("Z") ||
-                regNumberSubstring.contains("0")) {
-            throw new IllegalArgumentException("Wyróżnik pojazdu zawiera niedozwolone znaki (B,D,I,O,Z,0).");
-        }
+        for (char invalidChar : registrationNumberInvalidChars)
+            if (regNumberSubstring.contains(String.valueOf(invalidChar)))
+                throw new IllegalArgumentException("Wyróżnik pojazdu zawiera niedozwolone znaki (B,D,I,O,Z,0).");
     }
 
-    public final void setRegistrationNumber(String registrationNumber) {
+    final void setRegistrationNumber(String registrationNumber) throws IllegalArgumentException {
         registrationNumber = registrationNumber.toUpperCase();
         validateRegistrationNumber(registrationNumber);
         this.registrationNumber = registrationNumber;
     }
 
-    public String getRegistrationNumber() {
+    String getRegistrationNumber() {
         return registrationNumber;
     }
 
-    public final void setModel(String model) {
+    final void setModel(String model) {
         this.model = model;
     }
 
@@ -103,7 +100,7 @@ public class Car {
         return model;
     }
 
-    public final void setProducer(String producer) {
+    final void setProducer(String producer) {
         this.producer = producer;
     }
 
@@ -111,41 +108,44 @@ public class Car {
         return producer;
     }
 
-    private void validateProductionYear(String productionYear) {
-        if (productionYear.length() != 4)
-            throw new IllegalArgumentException("Nieprawidłowy rok produkcji.");
-
+    private void validateProductionYear(String productionYear) throws IllegalArgumentException {
         for (char prodYearChar : productionYear.toCharArray())
             if (!Character.isDigit(prodYearChar))
-                throw new IllegalArgumentException("Nieprawidłowy rok produkcji.");
+                throw new IllegalArgumentException("Rok produkcji zawiera niedozwolone znaki.");
+
+        if (productionYear.length() != 4)
+            throw new IllegalArgumentException("Nieprawidłowy rok produkcji.");
     }
 
-    public final void setProductionYear(String productionYear) {
+    final void setProductionYear(String productionYear) throws IllegalArgumentException {
         validateProductionYear(productionYear);
         this.productionYear = productionYear;
     }
 
-    public String getProductionYear() {
+    String getProductionYear() {
         return productionYear;
     }
 
-    public final void rent() {
-        if (rented) {
+    final void rent() throws IllegalStateException {
+        if (rented)
             throw new IllegalStateException("Samochód jest już wynajęty.");
-        } else {
+        else
             this.rented = true;
-        }
     }
 
-    public final void give() {
-        if (!rented) {
-            throw new IllegalStateException("Samochód nie został wynajęty.");
-        } else {
+    final void give() throws IllegalStateException {
+        if (!rented)
+            throw new IllegalStateException("Samochód nie został jeszcze wynajęty.");
+        else
             this.rented = false;
-        }
     }
 
-    public Car(String registrationNumber, String producer, String model, String productionYear, boolean rented) {
+    boolean isRented() {
+        return rented;
+    }
+
+    Car(String registrationNumber, String producer, String model, String productionYear, boolean rented)
+            throws IllegalArgumentException {
         setRegistrationNumber(registrationNumber);
         setProducer(producer);
         setModel(model);
@@ -153,7 +153,8 @@ public class Car {
         this.rented = rented;
     }
 
-    public Car(String registrationNumber, String producer, String model, String productionYear) {
+    Car(String registrationNumber, String producer, String model, String productionYear)
+            throws IllegalArgumentException {
         this(registrationNumber, producer, model, productionYear, false);
     }
 

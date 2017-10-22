@@ -35,10 +35,23 @@ class CarTest {
             car.setRegistrationNumber("");
         });
         assertEquals("Numer rejestracyjny niezgodny z dopuszczalnym wzorcem.", exception.getMessage());
-}
+    }
 
     @Test
     void setProductionYear() {
+        String productionYear = "1994";
+        car.setProductionYear(productionYear);
+        assertEquals(productionYear, car.getProductionYear());
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            car.setProductionYear("999");
+        });
+        assertEquals("Nieprawidłowy rok produkcji.", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            car.setProductionYear("20O9");
+        });
+        assertEquals("Rok produkcji zawiera niedozwolone znaki.", exception.getMessage());
     }
 
     @Test
@@ -58,7 +71,7 @@ class CarTest {
         Throwable exception = assertThrows(IllegalStateException.class, () -> {
             car.give();
         });
-        assertEquals("Samochód nie został wynajęty.", exception.getMessage());
+        assertEquals("Samochód nie został jeszcze wynajęty.", exception.getMessage());
 
         car.rent();
         car.give();

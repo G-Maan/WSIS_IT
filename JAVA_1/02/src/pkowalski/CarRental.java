@@ -29,24 +29,31 @@ public class CarRental {
         return car != null && !car.isRented();
     }
 
-    void rentCar(String registrationNumber) throws IllegalArgumentException, IllegalStateException {
-        Car car = findCar(registrationNumber);
-        if (car == null)
-            throw new IllegalArgumentException("Niepoprawny numer rejestracyjny.");
-        else {
-            car.rent();
-            logs.add(new CarLog(car.getRegistrationNumber(), car.getProducer(), car.getModel(),
-                    car.getProductionYear(), car.isRented()));
-            rentedCars++;
-        }
-    }
-
-    void rentCar(int index) throws IllegalStateException, IndexOutOfBoundsException {
-        Car car = cars.get(index);
+    private void rentCar(Car car) throws IllegalStateException {
         car.rent();
         logs.add(new CarLog(car.getRegistrationNumber(), car.getProducer(), car.getModel(),
                 car.getProductionYear(), car.isRented()));
         rentedCars++;
+    }
+
+    void rentCar(String registrationNumber) throws IllegalArgumentException, IllegalStateException {
+        Car car = findCar(registrationNumber);
+        if (car == null)
+            throw new IllegalArgumentException("Niepoprawny numer rejestracyjny.");
+        else
+            rentCar(car);
+    }
+
+    void rentCar(int index) throws IllegalStateException, IndexOutOfBoundsException {
+        Car car = cars.get(index);
+        rentCar(car);
+    }
+
+    private void giveCar(Car car) throws IllegalStateException {
+        car.give();
+        logs.add(new CarLog(car.getRegistrationNumber(), car.getProducer(), car.getModel(),
+                car.getProductionYear(), car.isRented()));
+        rentedCars--;
     }
 
     void giveCar(String registrationNumber) throws IllegalArgumentException, IllegalStateException {
@@ -54,19 +61,13 @@ public class CarRental {
         if (car == null)
             throw new IllegalArgumentException("Niepoprawny numer rejestracyjny.");
         else {
-            car.give();
-            logs.add(new CarLog(car.getRegistrationNumber(), car.getProducer(), car.getModel(),
-                    car.getProductionYear(), car.isRented()));
-            rentedCars--;
+            giveCar(car);
         }
     }
 
     void giveCar(int index) throws IllegalStateException, IndexOutOfBoundsException {
         Car car = cars.get(index);
-        car.give();
-        logs.add(new CarLog(car.getRegistrationNumber(), car.getProducer(), car.getModel(),
-                car.getProductionYear(), car.isRented()));
-        rentedCars--;
+        giveCar(car);
     }
 
     boolean addCar(String registrationNumber, String producer, String model, String productionYear)
@@ -104,7 +105,7 @@ public class CarRental {
     }
 
     void editCar(String oldRegistrationNumber, String newRegistrationNumber, String producer, String model,
-                        String productionYear) throws IllegalArgumentException {
+                 String productionYear) throws IllegalArgumentException {
         Car car = findCar(oldRegistrationNumber);
         if (car == null)
             throw new IllegalArgumentException("Niepoprawny numer rejestracyjny.");
@@ -124,23 +125,37 @@ public class CarRental {
                 "Dostępne: " + (cars.size() - rentedCars) + "\n";
     }
 
-    String logs() {
+    String logsAll() {
         logs.sort(new CarLog.CarLogComparator());
         StringBuilder sb = new StringBuilder();
-        for(CarLog log: logs)
+
+        for (CarLog log : logs)
             sb.append(log.toString());
 
         return sb.toString();
     }
 
     String logs(String registrationNumber) {
+        logs.sort(new CarLog.CarLogComparator());
         StringBuilder sb = new StringBuilder();
 
-        for(CarLog log: logs)
-            if(registrationNumber.equals(log.getRegistrationNumber()))
+        for (CarLog log : logs)
+            if (registrationNumber.equals(log.getRegistrationNumber()))
                 sb.append(log.toString());
 
         return sb.toString();
+    }
+
+    String carToString(int index) throws IndexOutOfBoundsException {
+        return cars.get(index).toString();
+    }
+
+    String carToString(String registrationNumber) throws IllegalArgumentException {
+        Car car = findCar(registrationNumber);
+        if (car == null)
+            throw new IllegalArgumentException("Niepoprawny numer rejestracyjny.");
+        else
+            return car.toString();
     }
 
     @Override
@@ -151,8 +166,6 @@ public class CarRental {
             sb.append("[").append(i + 1).append("]\n");
             sb.append(cars.get(i).toString()).append("\n");
         }
-
-        sb.append(stats());
 
         return sb.toString();
     }

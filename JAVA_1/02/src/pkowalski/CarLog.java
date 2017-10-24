@@ -62,7 +62,7 @@ public class CarLog {
 
     static class CarLogComparator implements Comparator<CarLog> {
         public int compare(CarLog cl1, CarLog cl2) {
-            return cl1.date.compareTo(cl2.date);
+            return cl2.date.compareTo(cl1.date);
         }
     }
 }

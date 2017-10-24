@@ -198,8 +198,7 @@ class CarRentalTest {
                 "[3]\n" +
                 "Mazda 6 2017\n" +
                 "Numer rejestracyjny: JWJ A1CC\n" +
-                "Status: Dostępny\n\n" +
-                carRental.stats();
+                "Status: Dostępny\n\n";
 
         assertEquals(expected, carRental.toString());
     }

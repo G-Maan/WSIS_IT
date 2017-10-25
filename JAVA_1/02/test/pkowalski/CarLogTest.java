@@ -35,7 +35,7 @@ class CarLogTest {
         log = new CarLog(car.getRegistrationNumber(), car.getProducer(), car.getModel(), car.getProductionYear(),
                 car.isRented());
 
-        expected = log.getDate().toString() + "\tZwrot\t\t\t" + partExpected;
+        expected = log.getDate().toString() + "\tZwrot\t\t" + partExpected;
         assertEquals(expected, log.toString());
     }
 

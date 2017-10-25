@@ -52,7 +52,7 @@ public class CarLog {
         if (rented)
             sb.append("\tWypożyczenie\t");
         else
-            sb.append("\tZwrot\t\t\t");
+            sb.append("\tZwrot\t\t");
 
         sb.append(producer).append(" ").append(model).append(" ").append(productionYear)
                 .append(" (").append(registrationNumber).append(")\n");

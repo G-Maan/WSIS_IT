@@ -158,12 +158,12 @@ public class Main {
 
         try {
             if (carRental.addCar(registrationNumber, producer, model, productionYear))
-                System.out.println("Samochód poprawnie dodany do zasobów wypożyczalni.");
+                System.out.println("Samochód poprawnie dodany do zasobów wypożyczalni.\n");
             else
                 System.out.println("[BŁAD] Nie można dodać samochodu." +
-                        "\n[BŁAD] Sprawdź, czy w bazie nie istnieje samochód o podanym numerze rejestracyjnym.");
+                        "\n[BŁAD] Sprawdź, czy w bazie nie istnieje samochód o podanym numerze rejestracyjnym.\n");
         } catch (IllegalArgumentException exception) {
-            System.out.println("[BŁAD] " + exception.getMessage());
+            System.out.println("[BŁAD] " + exception.getMessage() + "\n");
         }
 
         return State.BEGIN;
@@ -179,11 +179,11 @@ public class Main {
         String carRegNumber = readRegNumber(sc);
         try {
             if (carRental.removeCar(carRegNumber))
-                System.out.println("Samochód poprawnie usunięty.");
+                System.out.println("Samochód poprawnie usunięty.\n");
             else
-                System.out.println("[BŁAD] Nie można usunąć samochodu.");
+                System.out.println("[BŁAD] Nie można usunąć samochodu.\n");
         } catch (IllegalArgumentException exception) {
-            System.out.println("[BŁAD] " + exception.getMessage());
+            System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.REMOVE_CAR;
         }
         return State.BEGIN;
@@ -191,14 +191,15 @@ public class Main {
 
     private static State removeCarIndex(Scanner sc, CarRental carRental) {
         System.out.println(carRental.toString());
+        System.out.print("Wybierz samochód: ");
         int index = (readInteger(sc) - 1);
         try {
             if (carRental.removeCar(index))
-                System.out.println("Samochód poprawnie usunięty.");
+                System.out.println("Samochód poprawnie usunięty.\n");
             else
-                System.out.println("[BŁAD] Nie można usunąć samochodu.");
+                System.out.println("[BŁAD] Nie można usunąć samochodu.\n");
         } catch (IndexOutOfBoundsException exception) {
-            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.");
+            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.\n");
             return State.REMOVE_CAR;
         }
         return State.BEGIN;
@@ -227,7 +228,7 @@ public class Main {
 
             carRental.editCar(oldRegNumber, newRegNumber, producer, model, productionYear);
         } catch (IllegalArgumentException exception) {
-            System.out.println("[BŁĄD] " + exception.getMessage());
+            System.out.println("[BŁĄD] " + exception.getMessage() + "\n");
             return State.EDIT_CAR;
         }
         return State.BEGIN;
@@ -235,6 +236,7 @@ public class Main {
 
     private static State editCarIndex(Scanner sc, CarRental carRental) {
         System.out.println(carRental.toString());
+        System.out.print("Wybierz samochód: ");
         int index = (readInteger(sc) - 1);
         try {
             System.out.println(carRental.carToString(index));
@@ -251,10 +253,10 @@ public class Main {
 
             carRental.editCar(index, newRegNumber, producer, model, productionYear);
         } catch (IllegalArgumentException exception) {
-            System.out.println("[BŁĄD] " + exception.getMessage());
+            System.out.println("[BŁĄD] " + exception.getMessage() + "\n");
             return State.EDIT_CAR;
         } catch (IndexOutOfBoundsException exception) {
-            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.");
+            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.\n");
             return State.EDIT_CAR;
         }
         return State.BEGIN;
@@ -263,9 +265,9 @@ public class Main {
     private static State checkCar(Scanner sc, CarRental carRental) {
         String carRegNumber = readRegNumber(sc);
         if (carRental.canRentCar(carRegNumber))
-            System.out.println("Samochód dostępny.");
+            System.out.println("Samochód dostępny.\n");
         else
-            System.out.println("Samochód niedostępny.");
+            System.out.println("Samochód niedostępny.\n");
         return State.BEGIN;
     }
 
@@ -280,7 +282,7 @@ public class Main {
         try {
             carRental.rentCar(carRegNumber);
         } catch (IllegalArgumentException | IllegalStateException exception) {
-            System.out.println("[BŁAD] " + exception.getMessage());
+            System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.RENT_CAR;
         }
         return State.BEGIN;
@@ -288,14 +290,15 @@ public class Main {
 
     private static State rentCarIndex(Scanner sc, CarRental carRental) {
         System.out.println(carRental.toString());
+        System.out.print("Wybierz samochód: ");
         int index = (readInteger(sc) - 1);
         try {
             carRental.rentCar(index);
         } catch (IllegalStateException exception) {
-            System.out.println("[BŁAD] " + exception.getMessage());
+            System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.RENT_CAR;
         } catch (IndexOutOfBoundsException exception) {
-            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.");
+            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.\n");
             return State.RENT_CAR;
         }
         return State.BEGIN;
@@ -312,7 +315,7 @@ public class Main {
         try {
             carRental.giveCar(carRegNumber);
         } catch (IllegalArgumentException | IllegalStateException exception) {
-            System.out.println("[BŁAD] " + exception.getMessage());
+            System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.GIVE_CAR;
         }
         return State.BEGIN;
@@ -320,14 +323,15 @@ public class Main {
 
     private static State giveCarIndex(Scanner sc, CarRental carRental) {
         System.out.println(carRental.toString());
+        System.out.print("Wybierz samochód: ");
         int index = (readInteger(sc) - 1);
         try {
             carRental.giveCar(index);
         } catch (IllegalStateException exception) {
-            System.out.println("[BŁAD] " + exception.getMessage());
+            System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.GIVE_CAR;
         } catch (IndexOutOfBoundsException exception) {
-            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.");
+            System.out.println("[BŁAD] Niepoprawny identyfikator samochodu.\n");
             return State.GIVE_CAR;
         }
         return State.BEGIN;
@@ -414,9 +418,10 @@ public class Main {
     }
 
     private static void showRemoveCarMenu() {
-        System.out.println("\n[1] Usuń samochód podając numer rejestracyjny.\n" +
+        System.out.print("\n[1] Usuń samochód podając numer rejestracyjny.\n" +
                 "[2] Usuń samochód z listy.\n" +
-                "[3] Powrót.\n");
+                "[3] Powrót.\n\n" +
+                "Wybierz opcję: ");
     }
 
     private static State actionRemoveCarMenu(int option) {
@@ -437,9 +442,10 @@ public class Main {
     }
 
     private static void showEditCarMenu() {
-        System.out.println("\n[1] Edytuj samochód podając numer rejestracyjny.\n" +
+        System.out.print("\n[1] Edytuj samochód podając numer rejestracyjny.\n" +
                 "[2] Edytuj samochód z listy.\n" +
-                "[3] Powrót.\n");
+                "[3] Powrót.\n\n" +
+                "Wybierz opcję: ");
     }
 
     private static State actionEditCarMenu(int option) {
@@ -460,9 +466,10 @@ public class Main {
     }
 
     private static void showRentCarMenu() {
-        System.out.println("\n[1] Wypożycz samochód podając numer rejestracyjny.\n" +
+        System.out.print("\n[1] Wypożycz samochód podając numer rejestracyjny.\n" +
                 "[2] Wypożycz samochód z listy.\n" +
-                "[3] Powrót.\n");
+                "[3] Powrót.\n\n" +
+                "Wybierz opcję: ");
     }
 
     private static State actionRentCarMenu(int option) {
@@ -483,9 +490,10 @@ public class Main {
     }
 
     private static void showGiveCarMenu() {
-        System.out.println("\n[1] Zwróć samochód podając numer rejestracyjny.\n" +
+        System.out.print("\n[1] Zwróć samochód podając numer rejestracyjny.\n" +
                 "[2] Zwróć samochód z listy.\n" +
-                "[3] Powrót.\n");
+                "[3] Powrót.\n\n" +
+                "Wybierz opcję: ");
 
     }
 

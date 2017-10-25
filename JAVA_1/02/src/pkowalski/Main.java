@@ -157,8 +157,10 @@ public class Main {
         String productionYear = sc.nextLine();
 
         try {
-            if (carRental.addCar(registrationNumber, producer, model, productionYear))
-                System.out.println("Samochód poprawnie dodany do zasobów wypożyczalni.\n");
+            if (carRental.addCar(registrationNumber, producer, model, productionYear)) {
+                System.out.println("\nSamochód poprawnie dodany do zasobów wypożyczalni.\n");
+                System.out.println(carRental.carToString(registrationNumber) + "\n");
+            }
             else
                 System.out.println("[BŁAD] Nie można dodać samochodu." +
                         "\n[BŁAD] Sprawdź, czy w bazie nie istnieje samochód o podanym numerze rejestracyjnym.\n");
@@ -178,8 +180,10 @@ public class Main {
     private static State removeCarRegNumber(Scanner sc, CarRental carRental) {
         String carRegNumber = readRegNumber(sc);
         try {
-            if (carRental.removeCar(carRegNumber))
-                System.out.println("Samochód poprawnie usunięty.\n");
+            System.out.println("\n" + carRental.carToString(carRegNumber));
+            if (carRental.removeCar(carRegNumber)) {
+                System.out.println("Samochód poprawnie usunięty.\n\n");
+            }
             else
                 System.out.println("[BŁAD] Nie można usunąć samochodu.\n");
         } catch (IllegalArgumentException exception) {
@@ -194,8 +198,9 @@ public class Main {
         System.out.print("Wybierz samochód: ");
         int index = (readInteger(sc) - 1);
         try {
+            System.out.println("\n" + carRental.carToString(index));
             if (carRental.removeCar(index))
-                System.out.println("Samochód poprawnie usunięty.\n");
+                System.out.println("Samochód poprawnie usunięty.\n\n");
             else
                 System.out.println("[BŁAD] Nie można usunąć samochodu.\n");
         } catch (IndexOutOfBoundsException exception) {
@@ -214,7 +219,7 @@ public class Main {
     private static State editCarRegNumber(Scanner sc, CarRental carRental) {
         String oldRegNumber = readRegNumber(sc);
         try {
-            System.out.println(carRental.carToString(oldRegNumber) + "\n");
+            System.out.println("\n" + carRental.carToString(oldRegNumber) + "\n");
 
             System.out.println("Wprowadź nowe dane samochodu.\n" +
                     "Naciśnij ENTER aby pominąć.");
@@ -225,6 +230,7 @@ public class Main {
             String model = sc.nextLine();
             System.out.print("Podaj rok produkcji: ");
             String productionYear = sc.nextLine();
+            System.out.println("\n");
 
             carRental.editCar(oldRegNumber, newRegNumber, producer, model, productionYear);
         } catch (IllegalArgumentException exception) {
@@ -250,6 +256,7 @@ public class Main {
             String model = sc.nextLine();
             System.out.print("Podaj rok produkcji: ");
             String productionYear = sc.nextLine();
+            System.out.println("\n");
 
             carRental.editCar(index, newRegNumber, producer, model, productionYear);
         } catch (IllegalArgumentException exception) {
@@ -265,9 +272,9 @@ public class Main {
     private static State checkCar(Scanner sc, CarRental carRental) {
         String carRegNumber = readRegNumber(sc);
         if (carRental.canRentCar(carRegNumber))
-            System.out.println("Samochód dostępny.\n");
+            System.out.println("\nSamochód dostępny.\n");
         else
-            System.out.println("Samochód niedostępny.\n");
+            System.out.println("\nSamochód niedostępny.\n");
         return State.BEGIN;
     }
 
@@ -281,6 +288,7 @@ public class Main {
         String carRegNumber = readRegNumber(sc);
         try {
             carRental.rentCar(carRegNumber);
+            System.out.println("\n" + carRental.carToString(carRegNumber) + "\n");
         } catch (IllegalArgumentException | IllegalStateException exception) {
             System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.RENT_CAR;
@@ -294,6 +302,7 @@ public class Main {
         int index = (readInteger(sc) - 1);
         try {
             carRental.rentCar(index);
+            System.out.println("\n" + carRental.carToString(index) + "\n");
         } catch (IllegalStateException exception) {
             System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.RENT_CAR;
@@ -314,6 +323,7 @@ public class Main {
         String carRegNumber = readRegNumber(sc);
         try {
             carRental.giveCar(carRegNumber);
+            System.out.println("\n" + carRental.carToString(carRegNumber) + "\n");
         } catch (IllegalArgumentException | IllegalStateException exception) {
             System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.GIVE_CAR;
@@ -327,6 +337,7 @@ public class Main {
         int index = (readInteger(sc) - 1);
         try {
             carRental.giveCar(index);
+            System.out.println("\n" + carRental.carToString(index) + "\n");
         } catch (IllegalStateException exception) {
             System.out.println("[BŁAD] " + exception.getMessage() + "\n");
             return State.GIVE_CAR;
@@ -345,20 +356,20 @@ public class Main {
 
     private static State showHistoryAll(CarRental carRental) {
         System.out.println("\nHISTORIA WYPOŻYCZALNI");
-        System.out.println(carRental.logsAll());
+        System.out.println(carRental.logsAll() + "\n");
         return State.BEGIN;
     }
 
     private static State showHistoryCar(Scanner sc, CarRental carRental) {
         String carRegNumber = readRegNumber(sc);
         System.out.println("\nHISTORIA WYPOŻYCZEŃ (" + carRegNumber + ")");
-        System.out.println(carRental.logs(carRegNumber));
+        System.out.println(carRental.logs(carRegNumber) + "\n");
         return State.BEGIN;
     }
 
     private static State showStats(CarRental carRental) {
         System.out.println("\nSTATYSTYKI WYPOŻYCZALNI");
-        System.out.println(carRental.stats());
+        System.out.println(carRental.stats() + "\n");
         return State.BEGIN;
     }
 

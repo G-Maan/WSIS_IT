@@ -10,6 +10,5 @@ int main()
     a=(x+y)/2;
     b=x-a;
     cout<<a<<" "<<b;
-    system("PAUSE");
-    return EXIT_SUCCESS;
+    return 0;
 }

@@ -22,6 +22,8 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 	* [CESTA](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CESTA)
 	* [CPPCOUNTSORT](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/CPPCOUNTSORT)
 	* [SELSORTM](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/SELSORTM)
+3. Laboratorium 3
+	* [FLIP](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/FLIP)
 
 ### Programowanie JAVA (Węzowski)
 

@@ -7,7 +7,7 @@ Kod problemu: [FLIP](https://themis.lo14.wroc.pl/ZAISD2017GR3/FLIP)
 Bajtek bardzo nudzi się na lekcjach matematyki fizyki, dlatego skonstruował sobie zabawkę. Zabawka jest w kształcie pudełka, a zawiera w środku małe klocki.
 W pudełku znajduje się n kolumn. W i-tej kolumnie jest ai klocków. Na początku wszystkie klocki w kolumnie są ułożone na sobie. Bajtek może odwrócić pudełko i zgodnie z siłą grawitacji niektóre klocki zmienią swoją pozycję (patrz rysunek: klocki, które zmienią swoje miejsce zostały zaznaczone na niebiesko).
 
-![Flip example](https://themis.lo14.wroc.pl/ZAISD2017GR3/FLIP/FLIP.png)
+![Flip example](https://github.com/peterkowalski/WSIS_IT/blob/master/ZAISD/FLIP/FLIP.png)
 
 Mając dany początkowy układ klocków w zabawce Bajtka, znajdź końcowy układ.
 

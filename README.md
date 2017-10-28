@@ -24,6 +24,9 @@ Utwórz nowe *Issue* zamieszczając w tytule nazwę kursu (np. ZAISD) oraz nazw�
 	* [SELSORTM](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/SELSORTM)
 3. Laboratorium 3
 	* [FLIP](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/FLIP)
+4. Zadanie domowe 3
+	* [INTSORT](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/INTSORT)
+	* [BUCKETS](https://github.com/peterkowalski/WSIS_IT/tree/master/ZAISD/BUCKETS)
 
 ### Programowanie JAVA (Węzowski)
 
